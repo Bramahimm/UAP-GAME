@@ -22,8 +22,8 @@ char level;
 
 
 void Welcome() {
-	
-	
+
+	attron(COLOR_PAIR(1));
 
     
     mvprintw(LINES / 2 - 2, COLS / 2 - 20, "WW   WW  EEEEE  LL       CCCCC  OOO   MM   MM  EEEEE");
