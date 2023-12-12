@@ -13,7 +13,6 @@ int ekor1[100], ekor2[100];
 int fruitX, fruitY;
 bool game = true;
 int kolom = maxX/2; 
-bool pilih;
 char level;
 
 
@@ -22,9 +21,9 @@ char level;
 
 
 void Welcome() {
-
+	
+	
 	attron(COLOR_PAIR(1));
-
     
     mvprintw(LINES / 2 - 2, COLS / 2 - 20, "WW   WW  EEEEE  LL       CCCCC  OOO   MM   MM  EEEEE");
     mvprintw(LINES / 2 - 1, COLS / 2 - 20, "WW   WW  EE     LL      CC     OO  OO  MM   MM  EE");
@@ -79,7 +78,7 @@ void Draw() {
     mvprintw(y, x, "O");
     mvprintw(fruitY, fruitX, "#");
 
-    for (int i = 0; i < panjang ; i++) {
+    for (int i = 0; i < 5 ; i++) {
         mvprintw(ekor2[i], ekor1[i], "-");
     }
 
@@ -161,10 +160,17 @@ void setLevel() {
     clear();
 }
 
+void Kata(){
+	attron(COLOR_PAIR(5));
+	mvprintw((maxY/2)+5,(maxX/2)-27,"Pencet tombol apapun untuk keluar dari game !");
+	attroff(COLOR_PAIR(5));
+}
+
 int main() {
    	
     
     initscr();
+    
     start_color();
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     Welcome();
@@ -199,14 +205,27 @@ int main() {
         Algorithm();
     } 
 	while (game);
-    clear();
+	 
+	
+	clear();
 	
 	
-    
+    attron(COLOR_PAIR(6));
+    start_color();
+    init_pair(6, COLOR_BLACK, COLOR_YELLOW);
     mvprintw((maxY/2)-1,(maxX/2)-15,"Score yang kamu dapatkan adalah : %d",score);
+    
+    mvprintw((maxY/2)+4, (maxX/2)-30, "Silahkan Tekan Tombol apapun untuk Beralih ke Menu Selanjutnya !");
+    attroff(COLOR_PAIR(6));
     refresh();
-    Sleep(3000);
+    getch();    
+    clear();
+    start_color();
+    init_pair(5, COLOR_BLACK,COLOR_WHITE);
+    attron(COLOR_PAIR(5));
     mvprintw((maxY/2)-1,(maxX/2)-36,"Silahkan keluar, karna ini game limited edition, sekali seumur hidup");
+    attroff(COLOR_PAIR(5));
+    Kata();
     refresh();
     getch();
     endwin();
