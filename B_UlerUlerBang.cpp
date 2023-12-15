@@ -76,7 +76,7 @@ void Draw() {
     wrefresh(win);
 
     mvprintw(y, x, "O");
-    mvprintw(fruitY, fruitX, "#");
+    mvprintw(fruitY, fruitX, "*");
 
     for (int i = 0; i < panjang ; i++) {
         mvprintw(ekor2[i], ekor1[i], "-");
